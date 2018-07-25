@@ -1,0 +1,28 @@
+#b2
+{
+height:130px;
+width:120px;
+}
+.center{
+margin-left:400px;
+
+}
+.img li
+{
+	list-style:none;
+}
+
+.image
+{
+	list-style-type: none;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: auto;
+    float: left;
+    text-align: center;
+	margin-left:15px;
+}
+.image
+{
+text-decoration:none;
+}

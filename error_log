@@ -1,0 +1,41 @@
+[24-Apr-2017 17:28:33 Asia/Kolkata] PHP Fatal error:  Call to undefined function array_count() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 36
+[26-Apr-2017 02:52:21 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:52:23 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:52:37 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:52:39 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:52:40 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:52:41 America/Chicago] PHP Parse error:  syntax error, unexpected '$gallery_link' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 42
+[26-Apr-2017 02:53:00 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 126
+[26-Apr-2017 02:53:02 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 126
+[26-Apr-2017 02:53:29 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 126
+[26-Apr-2017 03:48:36 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 126
+[26-Apr-2017 04:12:46 America/Chicago] PHP Parse error:  syntax error, unexpected 'var' (T_VAR) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 26
+[26-Apr-2017 04:12:48 America/Chicago] PHP Parse error:  syntax error, unexpected 'var' (T_VAR) in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 26
+[26-Apr-2017 04:18:08 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 39
+[26-Apr-2017 04:18:10 America/Chicago] PHP Parse error:  syntax error, unexpected '<' in /home4/apniprk0/cms.fihd.in/application/views/admin/edit-gallery.php on line 39
+[26-Apr-2017 07:18:16 America/Chicago] PHP Parse error:  syntax error, unexpected '$val' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/gallery.php on line 80
+[26-Apr-2017 07:18:17 America/Chicago] PHP Parse error:  syntax error, unexpected '$val' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/gallery.php on line 80
+[26-Apr-2017 07:18:42 America/Chicago] PHP Parse error:  syntax error, unexpected '$val' (T_VARIABLE) in /home4/apniprk0/cms.fihd.in/application/views/gallery.php on line 80
+[26-Apr-2017 07:21:10 America/Chicago] PHP Fatal error:  Cannot use [] for reading in /home4/apniprk0/cms.fihd.in/application/views/gallery.php on line 82
+[26-Apr-2017 07:21:13 America/Chicago] PHP Fatal error:  Cannot use [] for reading in /home4/apniprk0/cms.fihd.in/application/views/gallery.php on line 82
+[23-Oct-2017 22:31:06 America/Chicago] PHP Parse error:  syntax error, unexpected 'version' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 378
+[10-Jan-2018 06:43:27 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::fetch_start_up_logs_head() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 1642
+[10-Jan-2018 06:49:15 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::fetch_start_up_logs_head() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 1642
+[10-Jan-2018 06:49:17 America/Chicago] PHP Fatal error:  Call to undefined method Admin_model::fetch_start_up_logs_head() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 1642
+[10-Jan-2018 19:19:25 Asia/Kolkata] PHP Fatal error:  Call to undefined method Admin_model::start_up_logo_del() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 1718
+[10-Jan-2018 19:20:43 Asia/Kolkata] PHP Fatal error:  Call to undefined method Admin_model::start_up_logo_del() in /home4/apniprk0/cms.fihd.in/application/controllers/Admin.php on line 1718
+[30-Jan-2018 07:28:49 America/Chicago] PHP Parse error:  syntax error, unexpected 'version' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 403
+[30-Jan-2018 07:29:48 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:29:52 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:29:52 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:29:53 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:29:53 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:29:54 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:30:52 America/Chicago] PHP Parse error:  syntax error, unexpected 'begin' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 422
+[30-Jan-2018 07:30:59 America/Chicago] PHP Parse error:  syntax error, unexpected 'end' (T_STRING) in /home4/apniprk0/cms.fihd.in/application/views/index.php on line 1042
+[09-Mar-2018 05:01:58 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home4/apniprk0/cms.fihd.in/system/core/Log.php on line 222
+[09-Mar-2018 05:02:41 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home4/apniprk0/cms.fihd.in/system/core/Log.php on line 284
+[09-Mar-2018 05:02:41 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/apniprk0/cms.fihd.in/system/core/Log.php:284) in /home4/apniprk0/cms.fihd.in/system/core/Common.php on line 573
+[09-Mar-2018 05:04:35 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home4/apniprk0/cms.fihd.in/system/core/Log.php on line 222
+[09-Mar-2018 05:07:17 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home4/apniprk0/cms.fihd.in/system/libraries/Session/drivers/Session_files_driver.php on line 263
+[09-Mar-2018 05:07:18 America/Chicago] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home4/apniprk0/cms.fihd.in/system/core/Log.php on line 222
