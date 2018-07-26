@@ -189,10 +189,17 @@ function ShowThumbnails( fileUrl, data )
                   <!-- END user info-->
                   <!-- Iterates over all sidebar items-->
 				  
-				    <li class=" ">
+				   <li class=" ">
                   <a href="<?= site_url('Admin/dashboard') ?>" title="Dashboard">
                      <em class="icon-grid"></em>
                      <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
+                  </a>    
+               </li>
+
+               <li class=" ">
+                  <a href="<?= site_url('Admin/quiz') ?>" title="Quiz">
+                     <em class="icon-grid"></em>
+                     <span data-localize="sidebar.nav.DASHBOARD">Quiz</span>
                   </a>    
                </li>
 
@@ -209,11 +216,6 @@ function ShowThumbnails( fileUrl, data )
                          <span data-localize="sidebar.nav.DASHBOARD">Content Pages</span>
                         </a>
                      </li>
-   						<li class=" ">
-   						 <a href="<?= site_url('Admin/settings/') ?>" title="Global Settings">
-   							<span data-localize="sidebar.nav.DASHBOARD">Global Settings</span>
-   						 </a>
-   					   </li>
 				      </ul>
                 </li>
            			<li class=" ">

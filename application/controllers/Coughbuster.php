@@ -75,6 +75,23 @@ class Coughbuster extends CI_Controller
 		echo json_encode($data);
 	}
 
+	function web_content(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'GET') {
+			$Wp_Id = (isset($_GET['post_id']) ? $_GET['post_id'] : '');
+			if(!empty($Wp_Id)){
+				$whr = '(Wp_Id = '.$Wp_Id.')';
+				$usna = $this->admin->fetch_user_exists('webpage',$whr);
+				$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
+			}else{
+				$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
 	function content_update(){
 		$method = $_SERVER['REQUEST_METHOD'];
 		if ($method == 'POST') {

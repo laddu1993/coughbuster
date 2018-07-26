@@ -14,7 +14,7 @@
 
             <div class="container-fluid">
 
-             <a href="<?= site_url('Admin/adduser?mr_id='.$mr_id.'') ?>"><button class="btn btn-success"> Add User </button></a> &nbsp;&nbsp;
+             <a href="<?= site_url('Admin/adduser?mr_id='.$mr_id.'') ?>"><button class="btn btn-success"> Add Doctor </button></a> &nbsp;&nbsp;
 
                <!-- START DATATABLE 2 -->
 

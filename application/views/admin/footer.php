@@ -24,11 +24,8 @@
 <script src="<?= site_url('vendor/screenfull/dist/screenfull.js') ?>"></script>
 <!-- LOCALIZE-->
 <script src="<?= site_url('vendor/jquery-localize-i18n/dist/jquery.localize.js') ?>"></script>
-<!-- RTL demo-->
-<script src="<?= site_url('public/js/demo/demo-rtl.js') ?>"></script>
+
 <!-- =============== PAGE VENDOR SCRIPTS ===============-->
-<!-- =============== APP SCRIPTS ===============-->
-<script src="<?= site_url('public/js/app.js') ?>"></script>
 </body>
 
 </html>
