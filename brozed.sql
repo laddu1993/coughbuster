@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2018 at 12:48 PM
+-- Generation Time: Jul 26, 2018 at 04:37 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -51,7 +51,45 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `md_user_id`, `user_status`, `added_by`, `added_date`, `updatedOn`) VALUES
-(1, 'Sheetal', 'FEMALE', '1989-10-11', 'Mumbai', '', NULL, 'sheetal@gmail.com', '9876543210', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-24 06:06:55', NULL);
+(2, 'Aniket Pharle', 'MALE', '1992-02-13', '', 'DR_786043409', NULL, 'aniket@gmail.com', '9658545221', 'rl5ajNpZ', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz`
+--
+
+CREATE TABLE `quiz` (
+  `id` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `type` enum('AUDIO','VIDEO') NOT NULL,
+  `question` varchar(500) DEFAULT NULL,
+  `file_url` varchar(255) DEFAULT NULL,
+  `show_answers` varchar(500) DEFAULT NULL,
+  `correct_answer` varchar(100) DEFAULT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `quiz`
+--
+
+INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `added_date`, `updatedOn`) VALUES
+(1, 0, 'AUDIO', 'asdasdasdasdasdasdas', 'http://localhost/userfiles/doctors/1/2019-Audi-A6-1-630x330.jpg', '[\"BROZEDEXLS\"]', 'BROZEDEXLS', '2018-07-26 14:24:14', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_details`
+--
+
+CREATE TABLE `quiz_details` (
+  `id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
+  `quiz_id` bigint(20) NOT NULL,
+  `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -83,8 +121,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `user_type`, `user_status`, `added_by`, `added_date`, `updatedOn`) VALUES
 (1, 'Admin', 'MALE', '1989-10-11', 'Mumbai', '', NULL, 'admin@gmail.com', '9876543210', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-24 06:06:55', NULL),
-(2, 'Dixit', 'MALE', '1999-02-03', 'Mumbai', 'MR_1944932137', NULL, 'dixit@gmail.com', '8878745651', 'wht6bd5lak/N7d', 1, 0, 'admin@gmail.com', '2018-07-24 06:43:00', NULL),
-(3, 'Test', 'MALE', '1996-03-14', 'Mumbai', 'MR_1212096651', NULL, 'test@gmail.com', '8778745651', 'wqjacq', 1, 0, 'Rohan', '2018-07-24 09:30:18', NULL);
+(2, 'Dixit', 'MALE', '1999-02-03', 'Mumbai', 'MR_1944932137', NULL, 'dixit@gmail.com', '8878745651', 'wht6bd5lak/N7d', 1, 0, 'admin@gmail.com', '2018-07-24 06:43:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,6 +163,19 @@ ALTER TABLE `doctors`
   ADD UNIQUE KEY `TM_` (`tm_access_code`);
 
 --
+-- Indexes for table `quiz`
+--
+ALTER TABLE `quiz`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `QUESTION_` (`quiz_id`);
+
+--
+-- Indexes for table `quiz_details`
+--
+ALTER TABLE `quiz_details`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -146,13 +196,25 @@ ALTER TABLE `webpage`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `quiz`
+--
+ALTER TABLE `quiz`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `quiz_details`
+--
+ALTER TABLE `quiz_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `webpage`
