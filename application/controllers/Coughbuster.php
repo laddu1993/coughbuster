@@ -112,6 +112,62 @@ class Coughbuster extends CI_Controller
 		echo json_encode($data);
 	}
 
+	function doctor_login_check(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'POST') {
+			$user_data['tm_access_code'] = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
+			$user_data['mobile_no'] = (isset($_GET['mobile_number']) ? $_GET['mobile_number'] : '');
+			$pass = (isset($_GET['pswd']) ? $_GET['pswd'] : '');
+			$user_data['pass'] = $this->passencrypt($pass);
+			if ($pass == 'BROZEDEXLS') {
+				if(!empty($user_data['tm_access_code']) && !empty($user_data['mobile_no']) && !empty($user_data['pass'])){
+					$whr = '(tm_access_code = "'.$user_data['tm_access_code'].'" AND mobile_no = "'.$user_data['mobile_no'].'" AND pass = "'.$user_data['pass'].'")';
+					$usna = current($this->admin->fetch_user_exists('doctors',$whr));
+					if(!empty($p_data)){
+						$usna['pass'] = $this->passdecrypt($usna['pass']);
+						$data['status'] = array('code' => 200, 'message' => 'success', 'data' => $usna);
+					}else{
+						$data['status'] = array('code' => 200, 'message' => 'No Record Found');
+					}
+				}else{
+					$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+				}
+			}else{
+				$data['status'] = array('code' => 400, 'message' => 'Password should be BROZEDEXLS');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+
+	function doctor_registration(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'POST') {
+			$user_data['name'] = (isset($_GET['name']) ? $_GET['name'] : '');
+			$user_data['gender'] = (isset($_GET['gender']) ? $_GET['gender'] : '');
+			$user_data['dob']  = (isset($_GET['dob']) ? $_GET['dob'] : '');
+			$user_data['mobile_no']  = (isset($_GET['mobile_no']) ? $_GET['mobile_no'] : '');
+			$user_data['place']  = (isset($_GET['place']) ? $_GET['place'] : '');
+			$user_data['tm_access_code']  = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
+			$user_data['dml_no']  = (isset($_GET['dml_no']) ? $_GET['dml_no'] : '');
+			$user_data['email_id']  = (isset($_GET['email_id']) ? $_GET['email_id'] : '');
+			$pass  = (isset($_GET['pass']) ? $_GET['pass'] : '');
+			$user_data['pass'] = $this->passencrypt($pass);
+			$user_data['md_user_id']  = (isset($_GET['md_user_id']) ? $_GET['md_user_id'] : '');
+			if ($pass == 'BROZEDEXLS') {
+				$usna = $this->admin->add_user('doctors',$user_data);
+				$data['status'] = array('code' => 201, 'message' => 'Created');
+			}else{
+				$data['status'] = array('code' => 400, 'message' => 'Password should be BROZEDEXLS');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
 	
 
 }

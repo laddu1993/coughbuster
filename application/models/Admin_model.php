@@ -1,9 +1,13 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set("display_errors",1);
 /**
- * This model is used for inserting,Editing and updating the seo commencement form.
- */
+ *
+ * @package    Admin_model
+ * @author     Vinil Lakkavatri (vinil.lakkavatri@icloud.com)
+ * @copyright  2017 Vinil Lakkavatri
+ * @ci_version 3.1.2 echo CI_VERSION;
+ * @deprecated File deprecated in Release 2.0.0
+ *
+ **/
 Class Admin_model extends CI_Model
 {
 
