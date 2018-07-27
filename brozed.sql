@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2018 at 04:37 PM
+-- Generation Time: Jul 27, 2018 at 03:00 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -34,7 +34,7 @@ CREATE TABLE `doctors` (
   `gender` enum('MALE','FEMALE') NOT NULL,
   `dob` date NOT NULL,
   `place` varchar(255) DEFAULT NULL,
-  `tm_access_code` varchar(255) NOT NULL,
+  `tm_access_code` varchar(255) DEFAULT NULL,
   `dml_no` varchar(100) DEFAULT NULL,
   `email_id` varchar(100) DEFAULT NULL,
   `mobile_no` varchar(100) NOT NULL,
@@ -51,7 +51,8 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `md_user_id`, `user_status`, `added_by`, `added_date`, `updatedOn`) VALUES
-(2, 'Aniket Pharle', 'MALE', '1992-02-13', '', 'DR_786043409', NULL, 'aniket@gmail.com', '9658545221', 'rl5ajNpZ', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL);
+(2, 'Aniket Pharle', 'MALE', '1992-02-13', '', 'DR_786043409', NULL, 'aniket@gmail.com', '9658545221', 'wht6bd5lak/N7d', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL),
+(3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '65465465', '5645', 'vinil.l@fi.com', '4564565646', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,8 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `added_date`, `updatedOn`) VALUES
-(1, 0, 'AUDIO', 'asdasdasdasdasdasdas', 'http://localhost/userfiles/doctors/1/2019-Audi-A6-1-630x330.jpg', '[\"BROZEDEXLS\"]', 'BROZEDEXLS', '2018-07-26 14:24:14', NULL);
+(1, 507742069, 'VIDEO', 'What is your diagnosis ?', 'http://localhost/userfiles/doctors/1/DoctorVeetBaljit(mrhd.in).3gp', '[\"Wheezing cough\",\"Croup cough\",\"Wet cough\",\"Dry cough\",\"Staccato cough\",\"Whooping cough\"]', 'Whooping cough', '2018-07-27 12:49:10', NULL),
+(2, 2108327361, 'AUDIO', 'What is your audio diagnosis ?', 'http://localhost/userfiles/doctors/1/Small_Doctor_-_Japa_Freestyle__Okhype.com_.mp3', '[\"Dry cough\",\"Wheezing cough\",\"Staccato cough\"]', 'Dry cough', '2018-07-27 12:52:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,7 @@ CREATE TABLE `users` (
   `gender` enum('MALE','FEMALE') NOT NULL,
   `dob` date NOT NULL,
   `place` varchar(255) DEFAULT NULL,
-  `tm_access_code` varchar(255) NOT NULL,
+  `tm_access_code` varchar(255) DEFAULT NULL,
   `dml_no` varchar(100) DEFAULT NULL,
   `email_id` varchar(100) DEFAULT NULL,
   `mobile_no` varchar(100) NOT NULL,
@@ -196,13 +198,13 @@ ALTER TABLE `webpage`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `quiz_details`
