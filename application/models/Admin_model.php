@@ -86,4 +86,10 @@ Class Admin_model extends CI_Model
         $this->db->update($table_name, $data);
     }
 
+    function lucky_winner($tm_access_code){
+        $sql = "SELECT doctor_id,tm_access_code, COUNT(doctor_id) as doctor_prescription_count FROM prescription_result WHERE tm_access_code= ".$tm_access_code." GROUP BY doctor_id";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
 }

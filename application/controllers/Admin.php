@@ -158,7 +158,7 @@ class Admin extends CI_Controller
 			$data['pass'] = $password;
 			$data['added_by'] = $_SESSION['username'];
 			$mr_id = $this->input->post('mr_id');
-			$data['md_user_id'] =  $mr_id;
+			$data['mr_user_id'] =  $mr_id;
 			$insert_data = $this->admin->add_user('doctors',$data);
 			redirect('Admin/view_all_doctors?id='.$mr_id);
 		}
@@ -166,7 +166,7 @@ class Admin extends CI_Controller
 
 	function view_all_doctors(){
 		if (isset($_GET['id']) && !empty($_GET['id'])) {
-			$whr = '(md_user_id = '.$_GET['id'].')';
+			$whr = '(mr_user_id = '.$_GET['id'].')';
 			$users_data = $this->admin->users_fetch('doctors',$whr);
 			$data['users_data'] = $users_data;
 		}
@@ -261,7 +261,7 @@ class Admin extends CI_Controller
 		if (isset($_POST['website_content']) && !empty($_POST)) {
 			$data['Wp_Name'] = $this->input->post('Wp_Name');
 			$data['Wp_Title'] = $this->input->post('Wp_Title');
-			$data['Wp_Content'] = $this->input->post('Wp_Content');
+			$data['Wp_Content'] = html_escape($this->input->post('Wp_Content', FALSE));
 			$data['Wp_Key'] = $this->input->post('Wp_Key');
 			$data['Wp_Des'] = $this->input->post('Wp_Des');
 			date_default_timezone_set("Asia/Kolkata");
@@ -300,8 +300,9 @@ class Admin extends CI_Controller
 			$data['quiz_id'] = rand();
 			$data['type'] = $this->input->post('type');
 			$data['question'] = $this->input->post('question');
-			$data['show_answers'] = json_encode($this->input->post('show_answers'));
+			$data['show_answers'] = json_encode(array_reverse($this->input->post('show_answers')));
 			$data['correct_answer'] = $this->input->post('correct_answer');
+			$data['status'] = $this->input->post('status');
 			$insert_data = $this->admin->add_user('quiz',$data);
 			$this->session->set_flashdata('message', 'Successfully Added!');
 			redirect('Admin/quiz');
@@ -311,6 +312,42 @@ class Admin extends CI_Controller
 			$this->load->view('admin/add-quiz',$data);
 		}else{
 			$this->load->view('admin/add-quiz');
+		}
+		$this->load->view('admin/footer');
+	}
+
+	function edit_quiz(){
+		$id = $this->uri->segment(3);
+		if (!empty($id)) {
+			$data = current($this->admin->users_fetch('quiz','id = '.$id.''));
+		}
+		if (isset($_POST) && !empty($_POST) || isset($_FILES['file_url']) && !empty($_FILES['file_url'])) {
+			if (isset($_FILES['file_url']['name']) && !empty($_FILES['file_url']['name'])) {
+				$image_name = $_FILES['file_url']['name'];
+			    $tmp_image_name = $_FILES['file_url']['tmp_name'];
+			    $image_type = $_FILES['file_url']['type'];
+			    $image_size = $_FILES['file_url']['size'];
+			    $status = move_uploaded_file($tmp_image_name, $_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id."/".$image_name);
+			    $data['file_url'] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/userfiles/doctors/".$this->user_id."/".$image_name;
+			}else{
+				$data['file_url'] = $this->input->post('url_file');
+			}
+			$data['type'] = $this->input->post('type');
+			$data['question'] = $this->input->post('question');
+			$data['show_answers'] = json_encode(array_reverse($this->input->post('show_answers')));
+			$data['correct_answer'] = $this->input->post('correct_answer');
+			$data['status'] = $this->input->post('status');
+			$quiz_id =  $this->input->post('quiz_id');
+			$whr = 'id = '.$quiz_id.'';
+			$update_mentor = $this->admin->update_into_table('quiz',$whr, $data);
+			$this->session->set_flashdata('message', 'Successfully Updated!');
+			redirect('Admin/edit_quiz/'.$quiz_id);
+		}
+		$this->load->view('admin/header');
+		if (!empty($data)) {
+			$this->load->view('admin/edit-quiz',$data);
+		}else{
+			$this->load->view('admin/edit-quiz');
 		}
 		$this->load->view('admin/footer');
 	}

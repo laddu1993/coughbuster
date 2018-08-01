@@ -179,6 +179,139 @@ class Coughbuster extends CI_Controller
 		echo json_encode($data);
 	}
 
+	function quiz_submitted_by_doctor(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'POST') {
+			$up_data['doctor_id']  = (isset($_GET['doctor_id']) ? $_GET['doctor_id'] : '');
+			$up_data['quiz_id']  = (isset($_GET['quiz_id']) ? $_GET['quiz_id'] : '');
+			$whr = '(doctor_id = '.$up_data['doctor_id'].' AND quiz_id = '.$up_data['quiz_id'].')';
+			$check_already_exists = current($this->admin->fetch_user_exists('quiz_details' , $whr));
+			if (!empty($check_already_exists)) {
+				$data['status'] = array('code' => 406, 'message' => 'Not Acceptable');
+			}else{
+				if (!empty($up_data['doctor_id']) && !empty($up_data['quiz_id'])) {
+					$usna = $this->admin->add_user('quiz_details',$up_data);
+					$data['status'] = array('code' => 201, 'message' => 'Created');
+				}else{
+					$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+				}
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+	function view_all_mr_list(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'GET') {
+			$whr = '(user_type = 1)';
+			$usna = $this->admin->users_fetch('users',$whr);
+			$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+	function view_all_doctors_by_mr(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'GET') {
+			$mr_user_id  = (isset($_GET['mr_id']) ? $_GET['mr_id'] : '');
+			$whr = '(mr_user_id = '.$mr_user_id.')';
+			$usna = $this->admin->users_fetch('doctors', $whr);
+			$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+	function view_single_doctor_list(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'GET') {
+			$doctor_id  = (isset($_GET['doctor_id']) ? $_GET['doctor_id'] : '');
+			if (!empty($doctor_id)) {
+				$whr = '(id = '.$doctor_id.')';
+				$usna = current($this->admin->users_fetch('doctors', $whr));
+				$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
+			}else{
+				$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+	function prescription_add(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'POST') {
+			$doctor_id  = (isset($_GET['doctor_id']) ? $_GET['doctor_id'] : '');
+			$prescription1  = (isset($_GET['prescription1']) ? $_GET['prescription1'] : '');
+			$prescription2  = (isset($_GET['prescription2']) ? $_GET['prescription2'] : '');
+			$prescription3  = (isset($_GET['prescription3']) ? $_GET['prescription3'] : '');
+			$prescription4  = (isset($_GET['prescription4']) ? $_GET['prescription4'] : '');
+			$prescription5  = (isset($_GET['prescription5']) ? $_GET['prescription5'] : '');
+			$tm_access_code  = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
+			if (!empty($prescription1)) {
+				$prescription[] = $prescription1;
+			}
+			if (!empty($prescription2)) {
+				$prescription[] = $prescription2;
+			}
+			if (!empty($prescription3)) {
+				$prescription[] = $prescription3;
+			}
+			if (!empty($prescription4)) {
+				$prescription[] = $prescription4;
+			}
+			if (!empty($prescription5)) {
+				$prescription[] = $prescription5;
+			}
+			//echo print_r($prescription);die;
+			if (!empty($prescription) && !empty($tm_access_code) && !empty($doctor_id)) {
+				$prec_count = count($prescription);
+				$up_data['tm_access_code'] = $tm_access_code;
+				$up_data['doctor_id'] = $doctor_id;
+				for ($i=0; $i < $prec_count; $i++) { 
+					$up_data['prescription'] = $prescription[$i];
+					$insert_data = $this->admin->add_user('prescription_result', $up_data);
+				}
+				$data['status'] = array('code' => 201, 'message' => 'Created');
+			}else{
+				$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
+	function lucky_winner(){
+		$method = $_SERVER['REQUEST_METHOD'];
+		if ($method == 'GET') {
+			$tm_access_code  = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
+			if (!empty($tm_access_code)) {
+				$lucky_winner_data = $this->admin->lucky_winner($tm_access_code);
+				ksort($lucky_winner_data['doctor_prescription_count']);
+				$lucky_winner = $lucky_winner_data[0];
+				$fetch_doctor_data = current($this->admin->users_fetch('doctors', 'id = '.$lucky_winner['doctor_id'].''));
+				if (!empty($fetch_doctor_data)) {
+					$lucky_winner['doctor_details'] = $fetch_doctor_data;
+					$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $lucky_winner);
+				}else{
+					$data['status'] = array('code' => 406, 'message' => 'Doctor Not Found!');
+				}
+			}else{
+				$data['status'] = array('code' => 300, 'message' => 'Parameters are missing!');
+			}
+		}else{
+			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
+		}
+		echo json_encode($data);
+	}
+
 }
 
 ?>

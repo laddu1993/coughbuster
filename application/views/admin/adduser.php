@@ -1,12 +1,13 @@
 <?php 
 error_reporting(0);
 $mr_id = $_GET['mr_id'];
+$tm_access_code = $_GET['tm_access_code'];
 ?>
 <section>
    <!-- Page content-->
    <div class="content-wrapper">
       <div class="content-heading">Create AdminPanel User</div>
-      <?php if(!empty($mr_id)){ ?>
+      <?php if(!empty($mr_id) && !empty($tm_access_code)){ ?>
          <form action="<?= site_url('Admin/add_doctor') ?>" name="add_doctor" method="post">
             <input type="hidden" name="mr_id" value="<?php echo $mr_id; ?>">
       <?php }else{ ?>
@@ -34,7 +35,15 @@ $mr_id = $_GET['mr_id'];
                   </div>
                </div>
             </fieldset>
-      
+            <fieldset>
+               <div class="form-group" >
+                  <label class="col-md-2 control-label">TM Access Code *</label>
+                <div class="col-md-10">
+                     <input id="tm_access_code" name="tm_access_code" type="number" class="form-control required" <?php if (!empty($tm_access_code)) { ?> value= "<?php echo $tm_access_code; ?>" readonly <?php } ?>>
+                     <span id="tm_access_code_errmsg"></span>
+                  </div>
+               </div>
+            </fieldset>
             <fieldset>
                <div class="form-group">
                   <label class="col-md-2 control-label" for="confirmpwd">Name *</label>
@@ -154,6 +163,7 @@ $("form").submit(function( event ) {
       var email_address = $('#email_id').val();
       var name = $('#name').val();
       var Usr_Password = $('#Usr_Password').val();
+      var tm_access_code = $('#tm_access_code').val();
       var dob = $('#dob').val();
       var mobile_no = $('#mobile_no').val();
       var user_status = $('#user_status').val();
@@ -172,6 +182,16 @@ $("form").submit(function( event ) {
          return false;
       }else{
          $('#password_errmsg').hide();
+      }
+
+      if (tm_access_code == '') {
+         $('#tm_access_code_errmsg').css('color', 'red');
+         $('#tm_access_code_errmsg').html("TM Access Code is required").show();
+         return false;
+      }else if(tm_access_code != ''){
+
+      }else{
+         $('#tm_access_code_errmsg').hide();
       }
 
       if (name == '') {

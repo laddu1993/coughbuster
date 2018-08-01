@@ -43,10 +43,10 @@
                     <fieldset id="answers_add">
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 1:</label>
-                            <div class="col-md-8">
+                            <div class="col-md-6">
                                <input type="text" placeholder="Answers" name="show_answers[]" class="form-control">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                                 <span class="btn btn-success" id="add_one" onclick="AddOneMore(this.id)">Add</span>
                                 <input type="hidden" id="add_ans" value="1">
                             </div>
@@ -61,6 +61,20 @@
                                 </div>
                              </div>
                     </fieldset>
+
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Status:</label>
+                            <div class="col-md-10">
+                               <select name="status" class="form-control" required="">
+                                    <option value="">SELECT</option>
+                                    <option value="0" >Active</option>
+                                    <option value="1">InActive</option>
+                               </select>
+                            </div>
+                         </div>
+                    </fieldset>
+
                 </div>
 
               </div>
@@ -79,6 +93,13 @@ function AddOneMore(e){
   //console.log(curMaxInput);
   var add_ans = $('#add_ans').val();
   add = parseInt(add_ans)+1;
-  $('div #answers_add').prepend('<fieldset><div class="form-group"><label class="col-md-2 control-label">Options of Answers '+ add +':</label><div class="col-md-8"><input type="text" placeholder="Answers" name="show_answers[]" class="form-control"></div><div class="col-md-2"><span class="btn btn-success" id="add_one" onclick="AddOneMore(this.id)">Add</span><input type="hidden" id="add_ans" value="'+ add +'"></div></div></fieldset>');
+  length = $('#answers_add').children('fieldset').length;
+  if (length < 4) {
+    $('div #answers_add').prepend('<fieldset id="answers_add'+ add +'"><div class="form-group"><label class="col-md-2 control-label">Options of Answers '+ add +':</label><div class="col-md-6"><input type="text" placeholder="Answers" name="show_answers[]" class="form-control"></div><div class="col-md-4"><span class="btn btn-success" id="add_one" onclick="AddOneMore(this.id)">Add</span><input type="hidden" id="add_ans" value="'+ add +'"><span class="btn btn-danger" id="'+ add +'" onclick="Remove(this.id)">Remove</span></div></div></fieldset>');
+  }
+}
+
+function Remove(e){
+    $('#answers_add'+e).remove();
 }
 </script>

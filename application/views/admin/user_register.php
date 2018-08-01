@@ -22,7 +22,7 @@
                            <small>All Users</small>
                         </div>
                         <div class="panel-body">
-                           <table id="datatable2" class="table table-striped table-hover">
+                           <table id="datatable" class="table table-striped table-hover">
                               <thead>
                                  <tr>
                                     <th>Name</th>
@@ -39,8 +39,8 @@
 											  <tr>
 												<td><?php echo $value['name']; ?></td>
 												<td><?php echo $value['mobile_no']; ?></td>
-												<td><?php echo $value['tm_access_code']; ?></td><td>
-										
+												<td><?php echo $value['tm_access_code']; ?></td>
+                                    <td>
 												<div class="btn-group mb-sm">
                                        <?php if ($value['user_status'] == 0) { ?>
 												   <button type="button" data-toggle="dropdown" class="btn dropdown-toggle btn-success">Active
@@ -52,7 +52,7 @@
                                        </button>
                                     <?php } ?>
 												   <ul role="menu" class="dropdown-menu">
-                                         <li><a class="edit" href="<?= site_url('Admin/view_all_doctors?id='.$value['id'].'') ?>">View All Doctors</a>
+                                         <li><a class="edit" href="<?= site_url('Admin/view_all_doctors?id='.$value['id'].'&tm_access_code='.$value['tm_access_code'].'') ?>">View All Doctors</a>
                                          </li>
                                          <li class="divider"></li>
 													  <!-- <li><a class="edit" href="<?= site_url('Admin/edit_mr?id='.$value['id'].'') ?>" >Edit</a>
@@ -62,6 +62,7 @@
 													  </li> 
 												   </ul>
 												</div>
+                                    </td>
 										   <?php } } ?>
                               </tbody>
                            </table>

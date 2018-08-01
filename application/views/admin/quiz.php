@@ -46,6 +46,7 @@
                                    <span class="caret"></span>
                                  </button>
 										   <ul role="menu" class="dropdown-menu">
+                                    <li><a class="edit" href="<?= site_url('Admin/edit_quiz/'.$value['id'].'') ?>">Edit</a></li> 
 											  <li><a class="delete" href="#" onclick="return DeleteUser(<?php echo $value['id']; ?>);">Delete</a></li> 
 										   </ul>
 										</div>

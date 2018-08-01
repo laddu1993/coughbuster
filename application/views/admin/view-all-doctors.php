@@ -1,5 +1,7 @@
  <!-- Main section-->
-<?php $mr_id = $_GET['id']; ?>
+<?php $mr_id = $_GET['id'];
+$tm_access_code = $_GET['tm_access_code'];
+?>
       <section>
 
          <!-- Page content-->
@@ -14,7 +16,7 @@
 
             <div class="container-fluid">
 
-             <a href="<?= site_url('Admin/adduser?mr_id='.$mr_id.'') ?>"><button class="btn btn-success"> Add Doctor </button></a> &nbsp;&nbsp;
+             <a href="<?= site_url('Admin/adduser?mr_id='.$mr_id.'&tm_access_code='.$tm_access_code.'') ?>"><button class="btn btn-success"> Add Doctor </button></a> &nbsp;&nbsp;
 
                <!-- START DATATABLE 2 -->
 
