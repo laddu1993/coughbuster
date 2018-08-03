@@ -13,11 +13,16 @@ class Admin extends CI_Controller
 {
 	
 	function __construct(){
+		error_reporting(0);
 		parent::__construct();
     	$this->load->library('session');
     	$this->load->helper('url');
         $this->load->model('Admin_model', 'admin');
         $this->user_id = $this->session->userdata('user_id');
+        if (!file_exists($_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id)) {
+		    mkdir($_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id);
+		    chmod($_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id, 0777);
+		}
 	}
 
 	private function passencrypt($string){
@@ -261,16 +266,14 @@ class Admin extends CI_Controller
 		if (isset($_POST['website_content']) && !empty($_POST)) {
 			$data['Wp_Name'] = $this->input->post('Wp_Name');
 			$data['Wp_Title'] = $this->input->post('Wp_Title');
-			$data['Wp_Content'] = html_escape($this->input->post('Wp_Content', FALSE));
+			$data['Wp_Content'] = strip_tags($this->input->post('Wp_Content'));
+			$data['Wp_Content'] = preg_replace("/\s|&nbsp;/",' ',$data['Wp_Content']);
 			$data['Wp_Key'] = $this->input->post('Wp_Key');
 			$data['Wp_Des'] = $this->input->post('Wp_Des');
 			date_default_timezone_set("Asia/Kolkata");
 			$data['Wp_Last_UpdatedOn'] = date("Y-m-d H:i:sa");
 			$id = $this->input->post('Wp_Id');
-			$b4_data = $this->admin->website_content($id);
-			if (!empty($b4_data)) {
-				$b4_data = $b4_data[0];
-			}
+			//echo "<pre>";print_r($data);die;
 			$update_mentor = $this->admin->update_website_content($id,$data);
 			redirect('/admin/website_content_edit?id='.$id.'&&status=1');
 		}
@@ -300,7 +303,7 @@ class Admin extends CI_Controller
 			$data['quiz_id'] = rand();
 			$data['type'] = $this->input->post('type');
 			$data['question'] = $this->input->post('question');
-			$data['show_answers'] = json_encode(array_reverse($this->input->post('show_answers')));
+			$data['show_answers'] = json_encode($this->input->post('show_answers'));
 			$data['correct_answer'] = $this->input->post('correct_answer');
 			$data['status'] = $this->input->post('status');
 			$insert_data = $this->admin->add_user('quiz',$data);
@@ -327,14 +330,14 @@ class Admin extends CI_Controller
 			    $tmp_image_name = $_FILES['file_url']['tmp_name'];
 			    $image_type = $_FILES['file_url']['type'];
 			    $image_size = $_FILES['file_url']['size'];
-			    $status = move_uploaded_file($tmp_image_name, $_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id."/".$image_name);
+			    $status = move_uploaded_file($image_name, $_SERVER['DOCUMENT_ROOT']."/userfiles/doctors/".$this->user_id."/".$image_name);
 			    $data['file_url'] = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/userfiles/doctors/".$this->user_id."/".$image_name;
 			}else{
 				$data['file_url'] = $this->input->post('url_file');
 			}
 			$data['type'] = $this->input->post('type');
 			$data['question'] = $this->input->post('question');
-			$data['show_answers'] = json_encode(array_reverse($this->input->post('show_answers')));
+			$data['show_answers'] = json_encode($this->input->post('show_answers'));
 			$data['correct_answer'] = $this->input->post('correct_answer');
 			$data['status'] = $this->input->post('status');
 			$quiz_id =  $this->input->post('quiz_id');

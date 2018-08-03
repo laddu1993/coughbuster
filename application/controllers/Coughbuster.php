@@ -123,7 +123,7 @@ class Coughbuster extends CI_Controller
 				if(!empty($user_data['tm_access_code']) && !empty($user_data['mobile_no']) && !empty($user_data['pass'])){
 					$whr = '(tm_access_code = "'.$user_data['tm_access_code'].'" AND mobile_no = "'.$user_data['mobile_no'].'" AND pass = "'.$user_data['pass'].'")';
 					$usna = current($this->admin->fetch_user_exists('doctors',$whr));
-					if(!empty($p_data)){
+					if(!empty($usna)){
 						$usna['pass'] = $this->passdecrypt($usna['pass']);
 						$data['status'] = array('code' => 200, 'message' => 'success', 'data' => $usna);
 					}else{
@@ -155,10 +155,17 @@ class Coughbuster extends CI_Controller
 			$user_data['email_id']  = (isset($_GET['email_id']) ? $_GET['email_id'] : '');
 			$pass  = (isset($_GET['pass']) ? $_GET['pass'] : '');
 			$user_data['pass'] = $this->passencrypt($pass);
-			$user_data['md_user_id']  = (isset($_GET['md_user_id']) ? $_GET['md_user_id'] : '');
+			$user_data['mr_user_id']  = (isset($_GET['mr_user_id']) ? $_GET['mr_user_id'] : '');
+			$user_data['next_day'] = date('Y-m-d', strtotime(' +1 day'));
 			if ($pass == 'BROZEDEXLS') {
-				$usna = $this->admin->add_user('doctors',$user_data);
-				$data['status'] = array('code' => 201, 'message' => 'Created');
+				$whr = '(tm_access_code = "'.$user_data['tm_access_code'].'" AND mobile_no = "'.$user_data['mobile_no'].'" AND pass = "'.$user_data['pass'].'")';
+				$usna = current($this->admin->fetch_user_exists('doctors',$whr));
+				if(empty($usna)){
+					$usna = $this->admin->add_user('doctors',$user_data);
+					$data['status'] = array('code' => 201, 'message' => 'Created');
+				}else{
+					$data['status'] = array('code' => 200, 'message' => 'Already Exists Doctor');
+				}
 			}else{
 				$data['status'] = array('code' => 400, 'message' => 'Password should be BROZEDEXLS');
 			}
@@ -310,6 +317,54 @@ class Coughbuster extends CI_Controller
 			$data['status'] = array('code' => 404, 'message' => 'Bad Request');
 		}
 		echo json_encode($data);
+	}
+
+	function CurlCall($method, $url, $data = false){
+	    $curl = curl_init();
+	    switch ($method)
+	    {
+	        case "POST":
+	            curl_setopt($curl, CURLOPT_POST, 1);
+
+	            if ($data)
+	                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+	            break;
+	        case "PUT":
+	            curl_setopt($curl, CURLOPT_PUT, 1);
+	            break;
+	        default:
+	            if ($data)
+	                $url = sprintf("%s?%s", $url, http_build_query($data));
+	    }
+	    curl_setopt($curl, CURLOPT_URL, $url);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	    $result = curl_exec($curl);
+	    curl_close($curl);
+	    return $result;
+	}
+
+	function send_message(){
+		$today = date('Y-m-d');
+		$fetch_data = $this->admin->users_fetch('doctors', 'next_day = "'.$today.'"');
+		$url="https://control.msg91.com/api/sendhttp.php";
+		$authKey = "177578AcBhGF5Vcxk5b5ed53b";
+		$senderId = "WIKORL";
+		if (!empty($fetch_data)) {
+			foreach ($fetch_data as $value) {
+				$mobileNumber = '91'.$value['mobile_no'];
+				$message = urlencode("Dear Dr.".$value['name'].", Thank you for Registration. LOGIN details are Mobile :".$value['mobile_no'].", PLACE : ".$value['place'].", EMAIL :".$value['email_id']." .Team BROZEDEXLS");
+				$route = "6";
+				$postData = array(
+				    'authkey' => $authKey,
+				    'mobiles' => $mobileNumber,
+				    'message' => $message,
+				    'sender' => $senderId,
+				    'route' => $route
+				);
+				$json_data = $this->CurlCall('POST',$url, $postData);
+				echo $json_data;
+			}
+		}
 	}
 
 }

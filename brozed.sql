@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2018 at 02:23 PM
+-- Generation Time: Aug 03, 2018 at 04:29 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -43,6 +43,7 @@ CREATE TABLE `doctors` (
   `user_status` int(11) NOT NULL DEFAULT '0' COMMENT '0=>active,1=>not active',
   `added_by` varchar(20) DEFAULT NULL,
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `next_day` date DEFAULT NULL,
   `updatedOn` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -50,9 +51,9 @@ CREATE TABLE `doctors` (
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `mr_user_id`, `user_status`, `added_by`, `added_date`, `updatedOn`) VALUES
-(2, 'Aniket Pharle', 'MALE', '1992-02-13', '', '345345345', NULL, 'aniket@gmail.com', '9658545221', 'wht6bd5lak/N7d', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL),
-(3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '345345345', '5645', 'vinil.l@fi.com', '4564565646', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', NULL);
+INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `mr_user_id`, `user_status`, `added_by`, `added_date`, `next_day`, `updatedOn`) VALUES
+(2, 'Aniket Pharle', 'MALE', '1992-02-13', '', '345345345', NULL, 'aniket@gmail.com', '9658545221', 'wht6bd5lak/N7d', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL, NULL),
+(3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '345345345', '5645', 'vinil.l@fi.com', '8894475769', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', '2018-08-03', NULL);
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,12 @@ INSERT INTO `prescription_result` (`id`, `prescription`, `doctor_id`, `tm_access
 (5, 'sdffsdsdfsdfsdfdssdfgsdgfgfd', 2, '345345345', '2018-08-01 06:03:29', '0000-00-00 00:00:00'),
 (6, 'What is Lorem Ipsum?', 3, '345345345', '2018-08-01 06:04:16', '0000-00-00 00:00:00'),
 (7, 'Why do we use it?', 3, '345345345', '2018-08-01 06:04:16', '0000-00-00 00:00:00'),
-(8, 'prescription2', 3, '345345345', '2018-08-01 06:04:16', '0000-00-00 00:00:00');
+(8, 'prescription2', 3, '345345345', '2018-08-01 06:04:16', '0000-00-00 00:00:00'),
+(9, 'What is Lorem Ipsum?', 3, '345345345', '2018-08-02 09:52:32', '0000-00-00 00:00:00'),
+(10, 'Why do we use it?', 3, '345345345', '2018-08-02 09:52:32', '0000-00-00 00:00:00'),
+(11, 'prescription2', 3, '345345345', '2018-08-02 09:52:32', '0000-00-00 00:00:00'),
+(12, 'estsedfsdf', 3, '345345345', '2018-08-02 09:52:33', '0000-00-00 00:00:00'),
+(13, 'sdffsdsdfsdfsdfdssdfgsdgfgfd', 3, '345345345', '2018-08-02 09:52:33', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -97,6 +103,7 @@ CREATE TABLE `quiz` (
   `file_url` varchar(255) DEFAULT NULL,
   `show_answers` varchar(500) DEFAULT NULL,
   `correct_answer` varchar(100) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0=>active,1=>not active',
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -105,9 +112,9 @@ CREATE TABLE `quiz` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `added_date`, `updatedOn`) VALUES
-(1, 507742069, 'VIDEO', 'What is your diagnosis ?', 'http://localhost/userfiles/doctors/1/DoctorVeetBaljit(mrhd.in).3gp', '[\"Wheezing cough\",\"Croup cough\",\"Wet cough\",\"Staccato cough\",\"Whooping cough\"]', 'Whooping cough', '2018-07-27 07:19:10', NULL),
-(2, 2108327361, 'AUDIO', 'What is your audio diagnosis ?', 'http://localhost/userfiles/doctors/1/Small_Doctor_-_Japa_Freestyle__Okhype.com_.mp3', '[\"Dry cough\",\"Wheezing cough\",\"Staccato cough\"]', 'Dry cough', '2018-07-27 07:22:18', NULL);
+INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `status`, `added_date`, `updatedOn`) VALUES
+(1, 507742069, 'VIDEO', 'What is your diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/DoctorVeetBaljit(mrhd.in).3gp', '[\"Dry cough\",\"Staccato cough\",\"Whooping cough\",\"Wheezing cough\"]', 'Whooping cough', 0, '2018-07-27 07:19:10', NULL),
+(2, 2108327361, 'AUDIO', 'What is your audio diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/Small_Doctor_-_Japa_Freestyle__Okhype.com_.mp3', '[\"Dry cough\",\"Wheezing cough\",\"Staccato cough\"]', 'Dry cough', 0, '2018-07-27 07:22:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -770,7 +777,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `prescription_result`
 --
 ALTER TABLE `prescription_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `quiz`

@@ -44,22 +44,58 @@
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 1:</label>
                             <div class="col-md-6">
-                               <input type="text" placeholder="Answers" name="show_answers[]" class="form-control">
+                               <input type="text" placeholder="Answer1" name="show_answers[]" class="form-control" required>
                             </div>
-                            <div class="col-md-4">
-                                <span class="btn btn-success" id="add_one" onclick="AddOneMore(this.id)">Add</span>
-                                <input type="hidden" id="add_ans" value="1">
+                         </div>
+                    </fieldset>
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Options of Answers 2:</label>
+                            <div class="col-md-6">
+                               <input type="text" placeholder="Answer2" name="show_answers[]" class="form-control">
+                            </div>
+                         </div>
+                    </fieldset>
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Options of Answers 3:</label>
+                            <div class="col-md-6">
+                               <input type="text" placeholder="Answer3" name="show_answers[]" class="form-control">
+                            </div>
+                         </div>
+                    </fieldset>
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Options of Answers 4:</label>
+                            <div class="col-md-6">
+                               <input type="text" placeholder="Answer4" name="show_answers[]" class="form-control">
+                            </div>
+                         </div>
+                    </fieldset>
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Options of Answers 5:</label>
+                            <div class="col-md-6">
+                               <input type="text" placeholder="Answer5" name="show_answers[]" class="form-control">
+                            </div>
+                         </div>
+                    </fieldset>
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Options of Answers 6:</label>
+                            <div class="col-md-6">
+                               <input type="text" placeholder="Answer6" name="show_answers[]" class="form-control">
                             </div>
                          </div>
                     </fieldset>
 
                     <fieldset>
-                             <div class="form-group">
-                                <label class="col-md-2 control-label">Correct Answer:</label>
-                                <div class="col-md-10">
-                                    <input type="text" placeholder="Correct Answer" name="correct_answer" class="form-control" required>
-                                </div>
-                             </div>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Correct Answer:</label>
+                            <div class="col-md-10">
+                                <input type="text" placeholder="Correct Answer" name="correct_answer" class="form-control" required>
+                            </div>
+                         </div>
                     </fieldset>
 
                     <fieldset>
@@ -87,19 +123,3 @@
      </div>
 
 </section>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script type="text/javascript">
-function AddOneMore(e){
-  //console.log(curMaxInput);
-  var add_ans = $('#add_ans').val();
-  add = parseInt(add_ans)+1;
-  length = $('#answers_add').children('fieldset').length;
-  if (length < 4) {
-    $('div #answers_add').prepend('<fieldset id="answers_add'+ add +'"><div class="form-group"><label class="col-md-2 control-label">Options of Answers '+ add +':</label><div class="col-md-6"><input type="text" placeholder="Answers" name="show_answers[]" class="form-control"></div><div class="col-md-4"><span class="btn btn-success" id="add_one" onclick="AddOneMore(this.id)">Add</span><input type="hidden" id="add_ans" value="'+ add +'"><span class="btn btn-danger" id="'+ add +'" onclick="Remove(this.id)">Remove</span></div></div></fieldset>');
-  }
-}
-
-function Remove(e){
-    $('#answers_add'+e).remove();
-}
-</script>
