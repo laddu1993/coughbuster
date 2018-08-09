@@ -100,6 +100,15 @@
 
                     <fieldset>
                          <div class="form-group">
+                            <label class="col-md-2 control-label">Description :</label>
+                            <div class="col-md-10">
+                                <textarea class="form-control" name="description" ></textarea>
+                            </div>
+                         </div>
+                    </fieldset>
+
+                    <fieldset>
+                         <div class="form-group">
                             <label class="col-md-2 control-label">Status:</label>
                             <div class="col-md-10">
                                <select name="status" class="form-control" required="">

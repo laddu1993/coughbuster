@@ -61,6 +61,7 @@
       </div>
    </div>
 </section>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 function DeleteUser(remove_user_id){
    var r = confirm("Are you sure you want delete question");

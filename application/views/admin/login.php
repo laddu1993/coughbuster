@@ -48,8 +48,8 @@
                      <span class="fa fa-lock form-control-feedback text-muted"></span>
                   </div>
                   <div class="clearfix">
-                     <div class="pull-right"><a href="<?= site_url('Admin/forgot_pswd') ?>" class="text-muted">Forgot your password?</a>
-                     </div>
+                     <!-- <div class="pull-right"><a href="<?= site_url('Admin/forgot_pswd') ?>" class="text-muted">Forgot your password?</a>
+                     </div> -->
                   </div>
                   <input type="submit" class="btn btn-primary mt-lg" value="Login"/>
                </form>

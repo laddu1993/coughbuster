@@ -194,7 +194,7 @@ class Coughbuster extends CI_Controller
 			$whr = '(doctor_id = '.$up_data['doctor_id'].' AND quiz_id = '.$up_data['quiz_id'].')';
 			$check_already_exists = current($this->admin->fetch_user_exists('quiz_details' , $whr));
 			if (!empty($check_already_exists)) {
-				$data['status'] = array('code' => 406, 'message' => 'Not Acceptable');
+				$data['status'] = array('code' => 406, 'message' => 'You are already applied!');
 			}else{
 				if (!empty($up_data['doctor_id']) && !empty($up_data['quiz_id'])) {
 					$usna = $this->admin->add_user('quiz_details',$up_data);
@@ -300,9 +300,8 @@ class Coughbuster extends CI_Controller
 		if ($method == 'GET') {
 			$tm_access_code  = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
 			if (!empty($tm_access_code)) {
-				$lucky_winner_data = $this->admin->lucky_winner($tm_access_code);
-				ksort($lucky_winner_data['doctor_prescription_count']);
-				$lucky_winner = $lucky_winner_data[0];
+				$lucky_winner_data = current($this->admin->lucky_winner($tm_access_code));
+				$lucky_winner = $lucky_winner_data;
 				$fetch_doctor_data = current($this->admin->users_fetch('doctors', 'id = '.$lucky_winner['doctor_id'].''));
 				if (!empty($fetch_doctor_data)) {
 					$lucky_winner['doctor_details'] = $fetch_doctor_data;

@@ -67,7 +67,7 @@
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 3:</label>
                             <div class="col-md-6">
-                               <input type="text" placeholder="Answer3" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[3]) ? $show_answers[3] : '')  ?>">
+                               <input type="text" placeholder="Answer3" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[2]) ? $show_answers[2] : '')  ?>">
                             </div>
                          </div>
                     </fieldset>
@@ -75,7 +75,7 @@
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 4:</label>
                             <div class="col-md-6">
-                               <input type="text" placeholder="Answer4" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[4]) ? $show_answers[4] : '')  ?>">
+                               <input type="text" placeholder="Answer4" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[3]) ? $show_answers[3] : '')  ?>">
                             </div>
                          </div>
                     </fieldset>
@@ -83,7 +83,7 @@
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 5:</label>
                             <div class="col-md-6">
-                               <input type="text" placeholder="Answer5" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[5]) ? $show_answers[5] : '')  ?>">
+                               <input type="text" placeholder="Answer5" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[4]) ? $show_answers[4] : '')  ?>">
                             </div>
                          </div>
                     </fieldset>
@@ -91,7 +91,7 @@
                          <div class="form-group">
                             <label class="col-md-2 control-label">Options of Answers 6:</label>
                             <div class="col-md-6">
-                               <input type="text" placeholder="Answer6" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[6]) ? $show_answers[6] : '')  ?>">
+                               <input type="text" placeholder="Answer6" name="show_answers[]" class="form-control" value="<?php echo(!empty($show_answers[5]) ? $show_answers[5] : '')  ?>">
                             </div>
                          </div>
                     </fieldset>
@@ -104,6 +104,15 @@
                                     <input type="text" placeholder="Correct Answer" name="correct_answer" class="form-control" value="<?php echo $correct_answer; ?>" required>
                                 </div>
                              </div>
+                    </fieldset>
+
+                    <fieldset>
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">Description :</label>
+                            <div class="col-md-10">
+                                <textarea class="form-control" name="description" ><?php echo $description; ?></textarea>
+                            </div>
+                         </div>
                     </fieldset>
 
                     <fieldset>

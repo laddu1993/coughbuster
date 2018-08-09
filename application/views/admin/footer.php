@@ -8,8 +8,6 @@
 <script src="<?= site_url('vendor/modernizr/modernizr.custom.js') ?>"></script>
 <!-- MATCHMEDIA POLYFILL-->
 <script src="<?= site_url('vendor/matchMedia/matchMedia.js') ?>"></script>
-<!-- JQUERY-->
-<script src="<?= site_url('vendor/jquery/dist/jquery.js') ?>"></script>
 <!-- BOOTSTRAP-->
 <script src="<?= site_url('vendor/bootstrap/dist/js/bootstrap.js') ?>"></script>
 <!-- STORAGE API-->

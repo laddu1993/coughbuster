@@ -195,7 +195,7 @@ function ShowThumbnails( fileUrl, data )
                      <span data-localize="sidebar.nav.DASHBOARD">Dashboard</span>
                   </a>    
                </li>
-
+               <?php //if ($_SESSION['user_type'] != 3) { ?>
                <li class=" ">
                   <a href="<?= site_url('Admin/quiz') ?>" title="Quiz">
                      <em class="icon-grid"></em>
@@ -218,12 +218,20 @@ function ShowThumbnails( fileUrl, data )
                      </li>
 				      </ul>
                 </li>
-           			<li class=" ">
-                        <a href="<?= site_url('Admin/users') ?>" title="Users" >
+           		 <li class=" ">
+                     <a href="<?= site_url('Admin/users') ?>" title="Users" >
+                        <em class="icon-grid"></em>
+                        <span data-localize="sidebar.nav.DASHBOARD">Users</span>
+                     </a>
+                </li>
+               <?php //}else{ ?>
+                  <li class=" ">
+                        <a href="<?= site_url('Admin/reports') ?>" title="Reports" >
                            <em class="icon-grid"></em>
-                           <span data-localize="sidebar.nav.DASHBOARD">Users</span>
+                           <span data-localize="sidebar.nav.DASHBOARD">Reports</span>
                         </a>
                   </li>
+               <?php //} ?>
                </ul>
                <!-- END sidebar nav-->
             </nav>

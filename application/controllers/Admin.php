@@ -305,6 +305,7 @@ class Admin extends CI_Controller
 			$data['question'] = $this->input->post('question');
 			$data['show_answers'] = json_encode($this->input->post('show_answers'));
 			$data['correct_answer'] = $this->input->post('correct_answer');
+			$data['description'] = $this->input->post('description');
 			$data['status'] = $this->input->post('status');
 			$insert_data = $this->admin->add_user('quiz',$data);
 			$this->session->set_flashdata('message', 'Successfully Added!');
@@ -339,6 +340,7 @@ class Admin extends CI_Controller
 			$data['question'] = $this->input->post('question');
 			$data['show_answers'] = json_encode($this->input->post('show_answers'));
 			$data['correct_answer'] = $this->input->post('correct_answer');
+			$data['description'] = $this->input->post('description');
 			$data['status'] = $this->input->post('status');
 			$quiz_id =  $this->input->post('quiz_id');
 			$whr = 'id = '.$quiz_id.'';
@@ -362,6 +364,19 @@ class Admin extends CI_Controller
 			$delete_quiz = $this->admin->users_delete('quiz',$whr);
 			echo "Success";
 		}
+	}
+
+	function reports(){
+		error_reporting(0);
+		$data['reports'] = $this->admin->fetch_reports();
+		//echo "<pre>";print_r($data);die;
+		$this->load->view('admin/header');
+		if (!empty($data)) {
+			$this->load->view('admin/reports',$data);
+		}else{
+			$this->load->view('admin/reports');
+		}
+		$this->load->view('admin/footer');
 	}
 
 

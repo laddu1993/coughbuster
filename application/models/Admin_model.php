@@ -87,7 +87,13 @@ Class Admin_model extends CI_Model
     }
 
     function lucky_winner($tm_access_code){
-        $sql = "SELECT doctor_id,tm_access_code, COUNT(doctor_id) as doctor_prescription_count FROM prescription_result WHERE tm_access_code= ".$tm_access_code." GROUP BY doctor_id";
+        $sql = "SELECT doctor_id,tm_access_code, COUNT(*) as doctor_prescription_count FROM prescription_result WHERE tm_access_code = ".$tm_access_code." GROUP BY doctor_id ORDER BY doctor_prescription_count DESC LIMIT 1";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    function fetch_reports(){
+        $sql = "SELECT t1.*, t2.* FROM `prescription_result` t1 LEFT JOIN doctors t2 ON t2.id = t1.doctor_id";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

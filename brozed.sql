@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2018 at 04:29 PM
+-- Generation Time: Aug 07, 2018 at 01:10 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -53,7 +53,9 @@ CREATE TABLE `doctors` (
 
 INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `dml_no`, `email_id`, `mobile_no`, `pass`, `mr_user_id`, `user_status`, `added_by`, `added_date`, `next_day`, `updatedOn`) VALUES
 (2, 'Aniket Pharle', 'MALE', '1992-02-13', '', '345345345', NULL, 'aniket@gmail.com', '9658545221', 'wht6bd5lak/N7d', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL, NULL),
-(3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '345345345', '5645', 'vinil.l@fi.com', '8894475769', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', '2018-08-03', NULL);
+(3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '345345345', '5645', 'vinil.l@fi.com', '8894475769', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', '2018-08-03', NULL),
+(4, 'ABCD', 'MALE', '0000-00-00', 'Mumbai', '65465465', '5645', 'abcd@gmail.com', '5464565646', 'wht6bd5lak/N7d', 3, 0, NULL, '2018-08-06 11:16:31', '2018-08-07', NULL),
+(5, 'XYZ', 'MALE', '1998-03-20', 'Mumbai', '65465465', '5645', 'xyz@gm.com', '5488565646', 'wht6bd5lak/N7d', 4, 0, NULL, '2018-08-06 11:17:58', '2018-08-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,47 @@ INSERT INTO `prescription_result` (`id`, `prescription`, `doctor_id`, `tm_access
 (10, 'Why do we use it?', 3, '345345345', '2018-08-02 09:52:32', '0000-00-00 00:00:00'),
 (11, 'prescription2', 3, '345345345', '2018-08-02 09:52:32', '0000-00-00 00:00:00'),
 (12, 'estsedfsdf', 3, '345345345', '2018-08-02 09:52:33', '0000-00-00 00:00:00'),
-(13, 'sdffsdsdfsdfsdfdssdfgsdgfgfd', 3, '345345345', '2018-08-02 09:52:33', '0000-00-00 00:00:00');
+(13, 'sdffsdsdfsdfsdfdssdfgsdgfgfd', 3, '345345345', '2018-08-02 09:52:33', '0000-00-00 00:00:00'),
+(14, 'What is Lorem Ipsum?', 6, '65465465', '2018-08-07 05:17:25', '0000-00-00 00:00:00'),
+(15, 'Why do we use it?', 6, '65465465', '2018-08-07 05:17:25', '0000-00-00 00:00:00'),
+(16, 'sadsadsad', 6, '65465465', '2018-08-07 05:17:25', '0000-00-00 00:00:00'),
+(17, 'ssadsadsadsadasd', 6, '65465465', '2018-08-07 05:17:25', '0000-00-00 00:00:00'),
+(18, 'Why do we use it?', 6, '65465465', '2018-08-07 05:17:25', '0000-00-00 00:00:00'),
+(19, 'What is Lorem Ipsum?', 6, '65465465', '2018-08-07 05:19:14', '0000-00-00 00:00:00'),
+(20, 'Why do we use it?', 6, '65465465', '2018-08-07 05:19:14', '0000-00-00 00:00:00'),
+(21, 'sadsadsad', 6, '65465465', '2018-08-07 05:19:14', '0000-00-00 00:00:00'),
+(22, 'ssadsadsadsadasd', 6, '65465465', '2018-08-07 05:19:14', '0000-00-00 00:00:00'),
+(23, 'Why do we use it?', 6, '65465465', '2018-08-07 05:19:14', '0000-00-00 00:00:00'),
+(24, 'What is Lorem Ipsum?', 6, '65465465', '2018-08-07 05:19:15', '0000-00-00 00:00:00'),
+(25, 'Why do we use it?', 6, '65465465', '2018-08-07 05:19:15', '0000-00-00 00:00:00'),
+(26, 'sadsadsad', 6, '65465465', '2018-08-07 05:19:15', '0000-00-00 00:00:00'),
+(27, 'ssadsadsadsadasd', 6, '65465465', '2018-08-07 05:19:15', '0000-00-00 00:00:00'),
+(28, 'Why do we use it?', 6, '65465465', '2018-08-07 05:19:15', '0000-00-00 00:00:00'),
+(29, 'What is Lorem Ipsum?', 5, '65465465', '2018-08-07 07:31:52', '0000-00-00 00:00:00'),
+(30, 'Why do we use it?', 5, '65465465', '2018-08-07 07:31:52', '0000-00-00 00:00:00'),
+(31, 'sadsadsad', 5, '65465465', '2018-08-07 07:31:52', '0000-00-00 00:00:00'),
+(32, 'ssadsadsadsadasd', 5, '65465465', '2018-08-07 07:31:52', '0000-00-00 00:00:00'),
+(33, 'Why do we use it?', 5, '65465465', '2018-08-07 07:31:52', '0000-00-00 00:00:00'),
+(34, 'What is Lorem Ipsum?', 5, '65465465', '2018-08-07 07:32:31', '0000-00-00 00:00:00'),
+(35, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:31', '0000-00-00 00:00:00'),
+(36, 'sadsadsad', 5, '65465465', '2018-08-07 07:32:31', '0000-00-00 00:00:00'),
+(37, 'ssadsadsadsadasd', 5, '65465465', '2018-08-07 07:32:31', '0000-00-00 00:00:00'),
+(38, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:31', '0000-00-00 00:00:00'),
+(39, 'What is Lorem Ipsum?', 5, '65465465', '2018-08-07 07:32:32', '0000-00-00 00:00:00'),
+(40, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:32', '0000-00-00 00:00:00'),
+(41, 'sadsadsad', 5, '65465465', '2018-08-07 07:32:32', '0000-00-00 00:00:00'),
+(42, 'ssadsadsadsadasd', 5, '65465465', '2018-08-07 07:32:32', '0000-00-00 00:00:00'),
+(43, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:32', '0000-00-00 00:00:00'),
+(44, 'What is Lorem Ipsum?', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(45, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(46, 'sadsadsad', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(47, 'ssadsadsadsadasd', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(48, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(49, 'What is Lorem Ipsum?', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(50, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(51, 'sadsadsad', 5, '65465465', '2018-08-07 07:32:33', '0000-00-00 00:00:00'),
+(52, 'ssadsadsadsadasd', 5, '65465465', '2018-08-07 07:32:34', '0000-00-00 00:00:00'),
+(53, 'Why do we use it?', 5, '65465465', '2018-08-07 07:32:34', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,6 +145,7 @@ CREATE TABLE `quiz` (
   `file_url` varchar(255) DEFAULT NULL,
   `show_answers` varchar(500) DEFAULT NULL,
   `correct_answer` varchar(100) DEFAULT NULL,
+  `description` text,
   `status` int(11) NOT NULL DEFAULT '0' COMMENT '0=>active,1=>not active',
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` datetime DEFAULT NULL
@@ -112,9 +155,9 @@ CREATE TABLE `quiz` (
 -- Dumping data for table `quiz`
 --
 
-INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `status`, `added_date`, `updatedOn`) VALUES
-(1, 507742069, 'VIDEO', 'What is your diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/DoctorVeetBaljit(mrhd.in).3gp', '[\"Dry cough\",\"Staccato cough\",\"Whooping cough\",\"Wheezing cough\"]', 'Whooping cough', 0, '2018-07-27 07:19:10', NULL),
-(2, 2108327361, 'AUDIO', 'What is your audio diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/Small_Doctor_-_Japa_Freestyle__Okhype.com_.mp3', '[\"Dry cough\",\"Wheezing cough\",\"Staccato cough\"]', 'Dry cough', 0, '2018-07-27 07:22:18', NULL);
+INSERT INTO `quiz` (`id`, `quiz_id`, `type`, `question`, `file_url`, `show_answers`, `correct_answer`, `description`, `status`, `added_date`, `updatedOn`) VALUES
+(1, 507742069, 'VIDEO', 'What is your diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/DoctorVeetBaljit(mrhd.in).3gp', '[\"Dry cough\",\"Staccato cough\",\"Whooping cough\",\"Wheezing cough\"]', 'Whooping cough', NULL, 0, '2018-07-27 07:19:10', NULL),
+(2, 2108327361, 'AUDIO', 'What is your audio diagnosis ?', 'http://coughbuster.in/userfiles/doctors/1/Small_Doctor_-_Japa_Freestyle__Okhype.com_.mp3', '[\"Dry cough\",\"Wheezing cough\",\"Staccato cough\",\"saddddddddddddddddddddddddddddsdsd\",\"Wheezing cough\",\"\"]', 'Dry cough', NULL, 0, '2018-07-27 07:22:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -153,7 +196,7 @@ CREATE TABLE `users` (
   `email_id` varchar(100) DEFAULT NULL,
   `mobile_no` varchar(100) NOT NULL,
   `pass` varchar(500) NOT NULL,
-  `user_type` int(11) DEFAULT NULL COMMENT '1=&gt;MR, 2=&gt;Super Admin',
+  `user_type` int(11) DEFAULT NULL COMMENT '1=>MR, 2=>Super Admin,3=>report',
   `user_status` int(11) NOT NULL DEFAULT '0' COMMENT '0=>active,1=>not active',
   `added_by` varchar(20) DEFAULT NULL,
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -692,7 +735,8 @@ INSERT INTO `users` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`, `
 (596, 'SUDARSANAN GURUSAMYPANDIYAN ', 'MALE', '0000-00-00', NULL, '824982', NULL, NULL, '', 'wht6bd5lak/N7d', 1, 0, NULL, '2018-07-30 12:01:58', NULL),
 (597, 'UMAR HATHA MOHAMED IBRAHIM ', 'MALE', '0000-00-00', NULL, '824956', NULL, NULL, '', 'wht6bd5lak/N7d', 1, 0, NULL, '2018-07-30 12:01:58', NULL),
 (598, 'ZIAUL HAQ MOHAMEDHANIFA', 'MALE', '0000-00-00', NULL, '827738', NULL, NULL, '', 'wht6bd5lak/N7d', 1, 0, NULL, '2018-07-30 12:01:58', NULL),
-(599, 'SATHIYARAJ D', 'MALE', '0000-00-00', NULL, '826055', NULL, NULL, '', 'wht6bd5lak/N7d', 1, 0, NULL, '2018-07-30 12:01:58', NULL);
+(599, 'SATHIYARAJ D', 'MALE', '0000-00-00', NULL, '826055', NULL, NULL, '', 'wht6bd5lak/N7d', 1, 0, NULL, '2018-07-30 12:01:58', NULL),
+(600, 'Report', 'MALE', '2018-08-01', NULL, NULL, NULL, 'report@gmail.com', '', 'wht6bd5lak/N7d', 3, 0, NULL, '2018-08-07 10:05:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -719,7 +763,7 @@ CREATE TABLE `webpage` (
 --
 
 INSERT INTO `webpage` (`Wp_Id`, `Wp_Name`, `Wp_Title`, `Wp_Key`, `Wp_Des`, `Wp_Content`, `Wp_ShortContent`, `Wp_Created`, `Wp_Status`, `Wp_Last_UpdatedOn`, `Wp_UpdatedBy`) VALUES
-(1, 'About Us', 'ABout Us', 'About', 'About', 'Our Story. Website.com began in 2005. After years in the web hosting ... you can create a professional website or online store using our free and intuitive tools.', '', '2017-03-08 13:11:00', 'Active', '2018-07-24 13:00:37', 'Dixit'),
+(1, 'About Us', 'ABout Us', 'About', 'About', 'Cough is one of the common clinical conditions observed in clinical practice. Most widely adopted diagnostic modality for patient evaluation is hearing to the cough sounds. Although easy to hear but it’s always challenging to evaluate the specic sound & make appropriate clinical interpretations. Cough Buster is a digital initiative of Wockhardt, the makers of Brozedex, Brozedex-LS & Brozedex Kid takes pride in bringing up an in-clinic initiative for clinical evaluations & interpretation of cough sounds. This is a quick & easy application developed with an objective of providing key insights about the various cough sounds so as to improve its diagnostic evaluation in clinical practice.  ', '', '2017-03-08 13:11:00', 'Active', '2018-08-03 20:56:22', 'Dixit'),
 (2, 'Disclamier', 'Disclamier', '', '', '', '', '2018-07-24 07:31:03', 'Active', NULL, 'Dixit');
 
 --
@@ -771,13 +815,13 @@ ALTER TABLE `webpage`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `prescription_result`
 --
 ALTER TABLE `prescription_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `quiz`
@@ -795,7 +839,7 @@ ALTER TABLE `quiz_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=600;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=601;
 
 --
 -- AUTO_INCREMENT for table `webpage`
