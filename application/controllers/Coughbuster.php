@@ -178,7 +178,8 @@ class Coughbuster extends CI_Controller
 	function quiz(){
 		$method = $_SERVER['REQUEST_METHOD'];
 		if ($method == 'GET') {
-			$usna = $this->admin->users_fetch('quiz');
+			$whr = 'status = 0';
+			$usna = $this->admin->users_fetch('quiz', $whr);
 			$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
 		}else{
 			$data['status'] = array('code' => 404, 'message' => 'Bad Request');

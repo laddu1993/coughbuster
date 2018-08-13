@@ -56,7 +56,7 @@ $tm_access_code = $_GET['tm_access_code'];
 
                                     <th>Name</th>
 
-                                    <th>Doctor Name</th>
+                                    <th>Doctor Mobile Number</th>
 
                                     <th class="sort-numeric">TM Access Code</th>
 
