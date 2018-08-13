@@ -158,6 +158,7 @@ class Admin extends CI_Controller
 			$data['tm_access_code'] = $this->input->post('tm_access_code');
 			$data['email_id'] = $this->input->post('email_id');
 			$data['mobile_no'] = $this->input->post('mobile_no');
+			$data['next_day'] = date('Y-m-d', strtotime(' +1 day'));
 			$password = $this->input->post('Usr_Password');
 			$password = $this->passencrypt($password);
 			$data['pass'] = $password;
