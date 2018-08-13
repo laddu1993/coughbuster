@@ -3,10 +3,9 @@
 <section>
    <!-- Page content-->
    <div class="content-wrapper">
-    <div style="float: right;"><a href="<?= site_url('Admin/quiz_reports') ?>"><button class="btn btn-warning">Quiz Reports</button></a></div>
       <div class="content-heading">
          <!-- END Language list    -->
-         Reports
+         Quiz Reports
          <small data-localize="dashboard.WELCOME"></small>
       </div>
       <!-- START widgets box-->
@@ -15,23 +14,23 @@
         <thead>
             <tr>
                 <th>Sr No.</th>
+                <th>Type</th>
                 <th>Doctor Name</th>
-                <th>TM Access Code</th>
-                <th>Gender</th>
-                <th>DOB</th>
-                <th>Prescription</th>
+                <th>Question</th>
+                <th>Is Answered</th>
+                <th>Correct Answer</th>
                 <th>Date</th>
             </tr>
         </thead>
         <tbody>
-         <?php if(!empty($reports)){ $i =1; foreach ($reports as $value) { ?>
+         <?php if(!empty($quiz_reports)){ $i =1; foreach ($quiz_reports as $value) { ?>
             <tr>
                 <td><?php echo $i; ?></td>
+                <td><?php echo $value['type']; ?></td>
                 <td><?php echo $value['name']; ?></td>
-                <td><?php echo $value['tm_access_code']; ?></td>
-                <td><?php echo $value['gender']; ?></td>
-                <td><?php echo $value['dob']; ?></td>
-                <td><?php echo $value['prescription']; ?></td>
+                <td><?php echo $value['question']; ?></td>
+                <td><?php echo $value['quiz_answerd']; ?></td>
+                <td><?php echo $value['correct_answer']; ?></td>
                 <td><?php echo $value['added_date']; ?></td>
             </tr>
          <?php $i++; } } ?>

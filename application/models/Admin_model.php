@@ -98,4 +98,12 @@ Class Admin_model extends CI_Model
         return $query->result_array();
     }
 
+    function quiz_reports(){
+        $sql = "SELECT t1.quiz_answerd,t1.added_date, t2.type,t2.question,t2.file_url,t2.correct_answer,t3.name,t3.email_id,t3.mobile_no from quiz_details t1 LEFT JOIN quiz t2 ON t2.id = t1.quiz_id LEFT JOIN doctors t3 ON t3.id = t1.doctor_id ORDER BY t1.added_date DESC";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    
+
 }

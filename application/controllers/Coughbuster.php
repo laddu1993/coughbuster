@@ -191,6 +191,7 @@ class Coughbuster extends CI_Controller
 		if ($method == 'POST') {
 			$up_data['doctor_id']  = (isset($_GET['doctor_id']) ? $_GET['doctor_id'] : '');
 			$up_data['quiz_id']  = (isset($_GET['quiz_id']) ? $_GET['quiz_id'] : '');
+			$up_data['quiz_answerd']  = (isset($_GET['quiz_answerd']) ? $_GET['quiz_answerd'] : '');
 			$whr = '(doctor_id = '.$up_data['doctor_id'].' AND quiz_id = '.$up_data['quiz_id'].')';
 			$check_already_exists = current($this->admin->fetch_user_exists('quiz_details' , $whr));
 			if (!empty($check_already_exists)) {

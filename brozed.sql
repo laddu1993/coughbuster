@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2018 at 01:10 PM
+-- Generation Time: Aug 13, 2018 at 09:04 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -55,7 +55,8 @@ INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `place`, `tm_access_code`,
 (2, 'Aniket Pharle', 'MALE', '1992-02-13', '', '345345345', NULL, 'aniket@gmail.com', '9658545221', 'wht6bd5lak/N7d', 2, 0, 'admin@gmail.com', '2018-07-25 06:36:12', NULL, NULL),
 (3, 'Vinil', 'MALE', '2018-07-19', 'Mumbai', '345345345', '5645', 'vinil.l@fi.com', '8894475769', 'wht6bd5lak/N7d', 2, 0, NULL, '2018-07-27 06:34:44', '2018-08-03', NULL),
 (4, 'ABCD', 'MALE', '0000-00-00', 'Mumbai', '65465465', '5645', 'abcd@gmail.com', '5464565646', 'wht6bd5lak/N7d', 3, 0, NULL, '2018-08-06 11:16:31', '2018-08-07', NULL),
-(5, 'XYZ', 'MALE', '1998-03-20', 'Mumbai', '65465465', '5645', 'xyz@gm.com', '5488565646', 'wht6bd5lak/N7d', 4, 0, NULL, '2018-08-06 11:17:58', '2018-08-07', NULL);
+(5, 'XYZ', 'MALE', '1998-03-20', 'Mumbai', '65465465', '5645', 'xyz@gm.com', '5488565646', 'wht6bd5lak/N7d', 4, 0, NULL, '2018-08-06 11:17:58', '2018-08-07', NULL),
+(6, 'Seenu', 'MALE', '2018-08-07', 'Mumbai', 'DR_488826758', NULL, 'seenu@gmail.com', '9875434533', 'wht6bd5lak/N7d', 390, 0, 'admin@gmail.com', '2018-08-13 06:34:08', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -169,6 +170,7 @@ CREATE TABLE `quiz_details` (
   `id` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
   `quiz_id` bigint(20) NOT NULL,
+  `quiz_answerd` varchar(255) NOT NULL,
   `added_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -176,8 +178,13 @@ CREATE TABLE `quiz_details` (
 -- Dumping data for table `quiz_details`
 --
 
-INSERT INTO `quiz_details` (`id`, `doctor_id`, `quiz_id`, `added_date`) VALUES
-(1, 2, 2, '2018-07-30 11:46:44');
+INSERT INTO `quiz_details` (`id`, `doctor_id`, `quiz_id`, `quiz_answerd`, `added_date`) VALUES
+(1, 2, 2, '', '2018-07-30 11:46:44'),
+(2, 3, 1, '', '2018-08-13 06:45:15'),
+(3, 4, 1, '', '2018-08-13 06:45:21'),
+(4, 5, 1, '', '2018-08-13 06:45:25'),
+(5, 6, 1, '', '2018-08-13 06:45:31'),
+(6, 6, 2, '', '2018-08-13 06:45:45');
 
 -- --------------------------------------------------------
 
@@ -815,7 +822,7 @@ ALTER TABLE `webpage`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `prescription_result`
@@ -833,7 +840,7 @@ ALTER TABLE `quiz`
 -- AUTO_INCREMENT for table `quiz_details`
 --
 ALTER TABLE `quiz_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

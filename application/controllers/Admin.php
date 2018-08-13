@@ -129,7 +129,7 @@ class Admin extends CI_Controller
 			$data['gender'] = $this->input->post('gender');
 			$data['dob'] = $this->input->post('dob');
 			$data['place'] = $this->input->post('place');
-			$data['tm_access_code'] = 'MR_'.rand();
+			$data['tm_access_code'] = $this->input->post('tm_access_code');
 			$data['user_type'] =  1;
 			$data['email_id'] = $this->input->post('email_id');
 			$data['mobile_no'] = $this->input->post('mobile_no');
@@ -155,7 +155,7 @@ class Admin extends CI_Controller
 			$data['gender'] = $this->input->post('gender');
 			$data['dob'] = $this->input->post('dob');
 			$data['place'] = $this->input->post('place');
-			$data['tm_access_code'] = 'DR_'.rand();
+			$data['tm_access_code'] = $this->input->post('tm_access_code');
 			$data['email_id'] = $this->input->post('email_id');
 			$data['mobile_no'] = $this->input->post('mobile_no');
 			$password = $this->input->post('Usr_Password');
@@ -377,6 +377,26 @@ class Admin extends CI_Controller
 			$this->load->view('admin/reports');
 		}
 		$this->load->view('admin/footer');
+	}
+
+	function quiz_reports(){
+		$data['quiz_reports'] = $this->admin->quiz_reports();
+		$this->load->view('admin/header');
+		if (!empty($data)) {
+			$this->load->view('admin/quiz-reports',$data);
+		}else{
+			$this->load->view('admin/quiz-reports');
+		}
+		$this->load->view('admin/footer');
+	}
+
+	function pdf_report(){
+		error_reporting(E_ALL);
+		ini_set("display_errors", 1);
+		$this->load->library('pdf');
+	  	$this->pdf->load_view('pdf');
+	  	$this->pdf->render();
+	  	$this->pdf->stream("welcome.pdf");
 	}
 
 
