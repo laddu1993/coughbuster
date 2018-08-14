@@ -57,7 +57,7 @@ class Coughbuster extends CI_Controller
 			$user_data['pass'] = $this->passencrypt($pswd);
 
 			if(!empty($user_data['mobile_no']) && !empty($user_data['pass'])){
-				$whr = '(mobile_no = '.$user_data['mobile_no'].' AND pass ="'.$user_data['pass'].'" AND user_status = 0)';
+				$whr = '(tm_access_code = '.$user_data['mobile_no'].' AND pass ="'.$user_data['pass'].'" AND user_status = 0)';
 				$p_data = current($this->admin->fetch_user_exists('users',$whr));
 				if(!empty($p_data)){
 					$p_data['pass'] = $this->passdecrypt($p_data['pass']);
