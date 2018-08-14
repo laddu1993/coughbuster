@@ -226,8 +226,8 @@ class Coughbuster extends CI_Controller
 	function view_all_doctors_by_mr(){
 		$method = $_SERVER['REQUEST_METHOD'];
 		if ($method == 'GET') {
-			$mr_user_id  = (isset($_GET['mr_id']) ? $_GET['mr_id'] : '');
-			$whr = '(mr_user_id = '.$mr_user_id.')';
+			$tm_access_code  = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
+			$whr = '(tm_access_code = '.$tm_access_code.')';
 			$usna = $this->admin->users_fetch('doctors', $whr);
 			$data['status'] = array('code' => 200, 'message' => 'success' , 'data' => $usna);
 		}else{
