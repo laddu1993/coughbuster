@@ -52,11 +52,11 @@ class Coughbuster extends CI_Controller
 	function login_check(){
 		$method = $_SERVER['REQUEST_METHOD'];
 		if ($method == 'POST') {
-			$user_data['mobile_no'] = (isset($_GET['mobile_number']) ? $_GET['mobile_number'] : '');
+			$user_data['tm_access_code'] = (isset($_GET['tm_access_code']) ? $_GET['tm_access_code'] : '');
 			$pswd = (isset($_GET['pswd']) ? $_GET['pswd'] : '');
 			$user_data['pass'] = $this->passencrypt($pswd);
 
-			if(!empty($user_data['mobile_no']) && !empty($user_data['pass'])){
+			if(!empty($user_data['tm_access_code']) && !empty($user_data['pass'])){
 				$whr = '(tm_access_code = '.$user_data['mobile_no'].' AND pass ="'.$user_data['pass'].'" AND user_status = 0)';
 				$p_data = current($this->admin->fetch_user_exists('users',$whr));
 				if(!empty($p_data)){

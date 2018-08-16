@@ -87,7 +87,7 @@ Class Admin_model extends CI_Model
     }
 
     function lucky_winner($tm_access_code){
-        $sql = "SELECT doctor_id,tm_access_code, COUNT(*) as doctor_prescription_count FROM prescription_result WHERE tm_access_code = ".$tm_access_code." GROUP BY doctor_id ORDER BY doctor_prescription_count DESC LIMIT 1";
+        $sql = "SELECT doctor_id,tm_access_code, SUM(prescription) as doctor_prescription_count FROM prescription_result WHERE tm_access_code = ".$tm_access_code." GROUP BY doctor_id ORDER BY doctor_prescription_count DESC LIMIT 1";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -100,6 +100,12 @@ Class Admin_model extends CI_Model
 
     function quiz_reports(){
         $sql = "SELECT t1.quiz_answerd,t1.added_date,t2.type,t2.question,t2.file_url,t2.correct_answer,t3.name,t3.email_id,t3.mobile_no from quiz_details t1 LEFT JOIN quiz t2 ON t2.quiz_id = t1.quiz_id LEFT JOIN doctors t3 ON t3.id = t1.doctor_id ORDER BY t1.added_date DESC";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    function tmaccess_code_admin($tm_access_code){
+        $sql = "SELECT * FROM `doctors` WHERE `tm_access_code` LIKE ".$tm_access_code."";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
