@@ -162,6 +162,7 @@ class Coughbuster extends CI_Controller
 				$usna = current($this->admin->fetch_user_exists('doctors',$whr));
 				if(empty($usna)){
 					$usna = $this->admin->add_user('doctors',$user_data);
+					$sms_shoot = $this->instant_sms($user_data['name'],$user_data['email_id'],$user_data['mobile_no'],$user_data['place']);
 					$data['status'] = array('code' => 201, 'message' => 'Created');
 				}else{
 					$data['status'] = array('code' => 200, 'message' => 'Already Exists Doctor');
@@ -342,6 +343,24 @@ class Coughbuster extends CI_Controller
 	    $result = curl_exec($curl);
 	    curl_close($curl);
 	    return $result;
+	}
+
+	function instant_sms($name,$email_id,$mobile_no,$place){
+		$url="https://control.msg91.com/api/sendhttp.php";
+		$authKey = "177578AcBhGF5Vcxk5b5ed53b";
+		$senderId = "WIKORL";
+		$mobileNumber = '91'.$mobile_no;
+		$message = urlencode("Dear Dr.".$name.", Thank you for Registration. LOGIN details are Mobile :".$mobile_no.", PLACE : ".$place.", EMAIL :".$email_id." .Team BROZEDEXLS");
+		$route = "6";
+		$postData = array(
+		    'authkey' => $authKey,
+		    'mobiles' => $mobileNumber,
+		    'message' => $message,
+		    'sender' => $senderId,
+		    'route' => $route
+		);
+		$json_data = $this->CurlCall('POST',$url, $postData);
+		echo $json_data;
 	}
 
 	function send_message(){
