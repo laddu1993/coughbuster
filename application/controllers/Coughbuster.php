@@ -197,7 +197,10 @@ class Coughbuster extends CI_Controller
 			$whr = '(doctor_id = '.$up_data['doctor_id'].' AND quiz_id = '.$up_data['quiz_id'].')';
 			$check_already_exists = current($this->admin->fetch_user_exists('quiz_details' , $whr));
 			if (!empty($check_already_exists)) {
-				$data['status'] = array('code' => 406, 'message' => 'You are already applied!');
+				$user_data['quiz_answerd'] = $up_data['quiz_answerd'];
+				$usna = $this->admin->update_into_table('quiz_details',$whr,$user_data);
+				$data['status'] = array('code' => 201, 'message' => 'Created');
+				//$data['status'] = array('code' => 406, 'message' => 'You are already applied!');
 			}else{
 				if (!empty($up_data['doctor_id']) && !empty($up_data['quiz_id'])) {
 					$usna = $this->admin->add_user('quiz_details',$up_data);
@@ -360,7 +363,7 @@ class Coughbuster extends CI_Controller
 		    'route' => $route
 		);
 		$json_data = $this->CurlCall('POST',$url, $postData);
-		echo $json_data;
+		//echo $json_data;
 	}
 
 	function send_message(){
